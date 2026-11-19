@@ -6,6 +6,42 @@
 
 **Never go off the pipeline (HARD, user-enforced 2026-11-18):** always run the task-type playbook in order, satisfying every step's gate before the next. NEVER improvise, shortcut, or re-order steps; NEVER build ahead of a step's prerequisite (e.g. no screen HTML before its ChatGPT mockup + same-chat extracted assets). Going off-pipeline is what produces off-theme, ugly UI — a deviation is a failure, not flexibility. If a rule conflicts with the task, follow the rule and say so; never silently bend it.
 
+**Universal B2B Domain Integrity — NEVER clone/skin B2C as B2B (HARD, universal):**
+When a user asks for a B2B product (app, dashboard, portal, site):
+- B2C = Individual consumer workflows (mobile recharge, personal bill pay, consumer wallet, cashback, entertainment).
+- B2B = Enterprise / Business operations:
+  1. Corporate Payroll & Salary Batches (bulk disbursements, payslips, employee master, deductions, approval chains)
+  2. Vendor Management & Invoicing (PO matching, vendor onboarding, invoice lifecycle, GST breakdown, TDS deduction)
+  3. Bulk Bank Payouts & Transfers (NEFT, RTGS, IMPS, scheduled batch payouts, bank account verification)
+  4. Statutory & Tax Compliance (GST portal filing, TDS, e-Invoicing, e-Way bills, tax ledger)
+  5. Corporate Cards & Expense Management (spend limits, employee reimbursement claims, department budgets, receipts)
+  6. Multi-Tier Approval Workflows (Maker-Checker, hierarchical approvals, audit trails, role-based access)
+  7. Business Analytics & Cash Flow Forecasting (working capital, aging analysis, reconciliation)
+- NEVER copy a consumer (B2C) codebase, do string replaces, and pass it off as B2B. A B2B project MUST be designed from the ground up from a dedicated B2B PRD, B2B architecture, B2B design research, and genuine B2B domain workflows.
+
+**Universal Banner Generation Rule — ZERO BAKED BUTTONS & NATURAL NEGATIVE SPACE FOR HTML CTA BUTTONS (HARD, universal):**
+- Banner images must be 100% visual background/illustrative artwork.
+- NEVER bake buttons, button outlines, CTA pills ("Claim Now", "Pay Now", "Get Started", "Recharge Now", etc.), badges, text, words, or letters into generated banner images!
+- Graphic content strictly on ONE side (35-45%), leaving 55-65% pure clean negative space of the continuous background scene.
+- WHY: Live, accessible, clickable HTML `<button>` or `<a>` elements and responsive typography are overlaid via HTML/CSS over the clean negative space in the web layout! A baked button is unclickable, non-interactive, unaccessible, and looks like amateur AI-slop.
+- In EVERY banner prompt to ChatGPT: explicitly mandate: `NO buttons, NO button shapes, NO CTA pills, NO text, NO words, NO letters, NO badges. Pure visual background artwork only. Leave 55-65% clean natural negative space for live HTML button and text overlay.`
+- In avoid array: `["baked buttons", "CTA buttons", "button shapes", "clickable UI elements", "text", "typography", "words", "letters", "badges", "gradient overlays", "white haze"]`.
+
+**Universal Icon Generation Rule — NO CLUTTERED AI-SLOP ICONS (Minimalist, Single Primary Subject) (HARD, universal):**
+- AI image models cram 5-6 random objects into one icon (coins + shield + chart + arrow + star + dial + ribbon). This is unacceptable AI slop.
+- Every icon MUST feature EXACTLY ONE primary focal subject / metaphor with a clean, uncluttered silhouette (e.g. clean folded invoice with single rupee mark, sleek bank vault, minimalist wallet). Maximum 1 subtle accent only if strictly necessary.
+- Visual minimalism, uncluttered geometry, ample negative space around the single subject, consistent visual weight across the set.
+- In EVERY icon prompt to ChatGPT: explicitly mandate: `Minimalist, single primary subject per icon, clean simple silhouette, uncluttered geometry. NO cluttered multiple objects, NO floating particles or extra confetti, NO complex mini-scenes. Clean, focused, consistent visual weight across the set.`
+- In avoid array: `["cluttered icons", "too many elements in single icon", "complex scenes in icon", "floating confetti/particles", "over-detailed 3D clutter", "AI-slop overloaded icons"]`.
+
+**Mandatory Type-A Planning Gate via ChatGPT — NO SKIPPING TO GENERATION/CODE (HARD, universal):**
+- For ANY new app/dashboard (including prototypes): NEVER skip the planning pipeline and jump straight to generating images or writing code.
+- Step 1: Open ChatGPT in Think mode, write an owner-quality brief, ask for `PRD.md` and `ARCHITECTURE.md`, and download them.
+- Step 2: Research design references (Pinterest, Dribbble) + Coolors.co vibrant palette + download `DESIGN_RESEARCH.md` and `STYLE_GUIDE.md`.
+- Step 3: Brand-kit sheet -> approval.
+- Step 4: Screen N only (mockup -> same-chat extracted assets -> build HTML/CSS).
+- Any shortcut (like copying another app, generating ad-hoc assets without PRD) is strictly forbidden.
+
 **Analyze→Plan→Execute→Verify cycle for ALL tasks (HARD, user-enforced 2026-11-19):** even 1-line fixes, CSS tweaks, or "quick" edits get the full 5-step cycle — no exceptions. The banner-failure (jumping in and making conflicting CSS changes without understanding root cause) is the mistake this closes:
 
 1. **Analyze the issue.** Read the current state (code, CSS, screenshot). Understand the ROOT CAUSE, not just the symptom. For UI bugs: view the live page, inspect the failing element's computed styles, identify which rules conflict.
@@ -191,13 +227,15 @@ Before the first implementation write for each screen or after a resume, run mas
   "content": ["real B2B data: vendor names, amounts, GSTINs, statuses — from the PRD; NO lorem ipsum"],
   "reference_anchors": {"layout_from": "<approved design ref letter — this ref's text placement, typography, element shapes, section arrangement and spacing drive the screen>", "palette_from": "<approved Coolors palette — OUR colors replace the ref's>", "do_not_copy": "only the ref's brand assets, logo, copy, photos and data — the ref's LAYOUT, TYPE, SHAPES AND ARRANGEMENT ARE THE BLUEPRINT"},
   "state":"light default (+ note dark variant if requested)",
-  "avoid":["generic AI cards","stock look","emblem twice","baked background","lorem ipsum","random gradients","cluttered nesting","generic SVG icon-library icons (use the project's generated icon set instead)","OS status bar (time, signal, WiFi, battery) across the top","emoji or emoji-glyph icons (Bank/UPI/Wallet etc. must be the generated vector icon set, NEVER emoji)"]
+  "avoid":["generic AI cards","stock look","emblem twice","baked background","lorem ipsum","random gradients","cluttered nesting","generic SVG icon-library icons (use the project's generated icon set instead)","OS status bar (time, signal, WiFi, battery) across the top","emoji or emoji-glyph icons (Bank/UPI/Wallet etc. must be the generated vector icon set, NEVER emoji)","baked buttons or CTA pills on banner images (leave clean natural negative space for HTML buttons)","text or typography baked into banners","cluttered icons with multiple competing objects or complex scenes (single primary subject only)","gradient overlays or white haze over banners"]
 }
 ```
 
 - **Ref = the layout blueprint (HARD, user-enforced 2026-11-18):** the approved design ref drives TEXT PLACEMENT, FONTS/TYPE SCALE, ELEMENT SHAPES, SECTION ARRANGEMENT and SPACING — match that look. What is NOT lifted from the ref: its brand assets, logo, copy, photos and data (those become our brand + PRD content), and its colors (those come from our selected Coolors palette). If the result “just looks like any average UI” instead of the ref, it drifted: re-anchor to the ref's layout and regenerate. Never write “layout is our own / original, not from a ref” in a prompt — that wording is what caused the generic drift.
 - **Content is real, from the PRD:** vendor/amount/GSTIN/status data, never lorem ipsum or placeholder boxes.
 - **Avoid-list** kills the generic tells. If a returned image looks like “any average image-gen output” or deviates from the ref, it’s a fail: regenerate with a tighter spec, don’t accept it.
+- **Banner generation:** Pure background/illustrative artwork only. ZERO baked buttons, button outlines, CTA pills, or text. Constrain 3D graphic to 35-45% on one side; leave 55-65% clean natural negative space for live HTML button and text overlay.
+- **Icon generation:** Minimalist, single focal subject/metaphor per icon with clean silhouette and uncluttered geometry. NO cluttered multi-object scenes or floating particles.
 - **Icon sets + banners = generated, not generic SVG:** the `icon_style` field must describe the project’s own cohesive icon set (style, stroke, color treatment) produced by ChatGPT in step 4(b), reused across screens. Banners are generated JPEG art. Do NOT fill the UI with generic line/stock SVG icon-library icons — that’s the AI-slop look the user rejects. A single trivial hand-drawn SVG mark is a flagged placeholder only, replaced by a generated one. The app’s iconography and hero art must all come from the generated set so it stays visually coherent.
 
 **B. Single-page site / landing**
@@ -517,6 +555,13 @@ Run these steps in order after building a screen/app section; do NOT skip any:
 4. **Surge publish + live verify:** deploy the updated folder to Surge, hand the user the **live Surge URL**. Never a `file://` or `http://localhost` link.
 
 
+## Universal HTML/CSS/JS Surge Live Link Rule (HARD)
+- **Scope:** ANY project built with or containing HTML, CSS, and JavaScript.
+- **Mandatory Live Link Hand-off:** After EVERY task, fix, or update is completed, the agent MUST immediately deploy the project to Surge and provide the clickable live Surge URL (`https://<project-domain>.surge.sh`) in the final response.
+- **Live User Verification:** The user inspects, tests, and verifies the task live on the real Web URL, not in an abstract code diff or local sandbox.
+- **Strict Prohibition:** NEVER hand over local file paths (`file://`), `localhost` links, or report a task completed without delivering the live Surge link.
+
+
 ## Repository Synchronization Protocol (HARD)
 - **Master GitHub Repository:** `https://github.com/droidsunil12-dev/ai-agent-rules`
 - **Automatic Sync Rule:** Every modification to agent operational rules (`AGENTS.md`, `SOUL.md`), craft standards, skills (`skills/`), or memories (`memory/`) MUST immediately be synchronized and committed to the master GitHub repository `https://github.com/droidsunil12-dev/ai-agent-rules`.
@@ -530,4 +575,3 @@ Run these steps in order after building a screen/app section; do NOT skip any:
     ```bash
     curl -sSL https://raw.githubusercontent.com/droidsunil12-dev/ai-agent-rules/main/install.sh | bash
     ```
- 

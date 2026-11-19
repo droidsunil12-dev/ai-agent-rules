@@ -29,6 +29,7 @@ Applied to EVERY task—including 1-line CSS tweaks, bug fixes, asset edits, and
 - **Mobile Responsive Standard (HARD):** All screens and components must render cleanly on mobile viewports (375px–430px) without horizontal scrolling. Use `white-space: nowrap` on critical metrics, badges, and percentage stats to prevent broken wraps.
 - **No External Messaging Without Explicit Consent (HARD):** NEVER send messages, emails, or WhatsApp texts to clients or external contacts without explicit user consent in the current turn.
 - **Asset & Icon Generation (HARD):** NEVER hand-draw complex icons or logos in raw SVG code. Generate icons via image generation models. Always verify alpha channel transparency (`A == 0` at edges) before assuming an asset has a baked background. Maintain unified icon stroke, fill, and optical weight in any single context.
+- **Universal HTML/CSS/JS Surge Live Link Rule (HARD):** For ANY project built with or containing HTML, CSS, and JS, once a task or fix is completed, you MUST deploy to Surge and provide the clickable live Surge URL (e.g. `https://<domain>.surge.sh`) in the response so the user can test the task live. Never hand over local `file://` or `localhost` paths, and never report done without the live Surge link.
 
 ---
 

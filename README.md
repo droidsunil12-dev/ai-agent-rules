@@ -62,9 +62,10 @@ ightarrow$ Light text (`#FFFFFF`, `#F8FAFC`).
 - Palettes must be dynamically generated per product domain.
 - Live UI verification on cards/dashboard is mandatory before proposing palettes to users.
 
-### 5. Deployment Protocol
-- All static builds must be deployed directly to Surge.
-- Live URLs (`https://<domain>.surge.sh`) provided to users; never local servers (`localhost` or `file://`).
+### 5. Universal HTML/CSS/JS Surge Live Link Protocol (HARD)
+- For ANY project built with or containing HTML, CSS, and JavaScript, once a task or fix is completed, the agent MUST immediately deploy the build to Surge and provide the clickable live Surge URL (`https://<domain>.surge.sh`) in the response.
+- User tests and verifies all work live on Surge.
+- Strictly prohibited: local server links (`localhost`), local file paths (`file://`), or reporting done without a live Surge URL.
 
 ---
 
