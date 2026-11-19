@@ -176,3 +176,7 @@ When a task is "improve mobile view / mobile responsiveness" only, the desktop l
 
 
 
+
+
+- **Repository Synchronization Protocol (HARD):** Master repo at `https://github.com/droidsunil12-dev/ai-agent-rules`. Every modification to agent rules, craft standards, skills, or memories must sync and commit to this repository immediately. Zero drift allowed.
+
