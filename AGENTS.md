@@ -515,3 +515,18 @@ Run these steps in order after building a screen/app section; do NOT skip any:
 2. **Banner text-on-empty-side verify (view-first):** View the actual banner image → identify the empty/negative-space side (left or right) → confirm text + buttons sit ONLY on that empty side, NOT overlapping the 3D graphic. If overlap → move text to the empty side or shrink/reposition the graphic.
 3. **Functional frontend wiring:** every button/tap target must be wired to a real screen/interaction (no `#` links, no `alert()` placeholders, no dead buttons). No backend — frontend-only (mock data, local state, in-memory nav).
 4. **Surge publish + live verify:** deploy the updated folder to Surge, hand the user the **live Surge URL**. Never a `file://` or `http://localhost` link.
+
+
+## Repository Synchronization Protocol (HARD)
+- **Master GitHub Repository:** `https://github.com/droidsunil12-dev/ai-agent-rules`
+- **Automatic Sync Rule:** Every modification to agent operational rules (`AGENTS.md`, `SOUL.md`), craft standards, skills (`skills/`), or memories (`memory/`) MUST immediately be synchronized and committed to the master GitHub repository `https://github.com/droidsunil12-dev/ai-agent-rules`.
+- **Zero Drift Standard:** Never leave rules modified locally in Aside (`~/.aside/u/0/`) or on Desktop without updating the GitHub repository.
+- **One-Line Agent Installers:**
+  - Windows PowerShell:
+    ```powershell
+    irm https://raw.githubusercontent.com/droidsunil12-dev/ai-agent-rules/main/install.ps1 | iex
+    ```
+  - Linux / macOS Bash:
+    ```bash
+    curl -sSL https://raw.githubusercontent.com/droidsunil12-dev/ai-agent-rules/main/install.sh | bash
+    ```
