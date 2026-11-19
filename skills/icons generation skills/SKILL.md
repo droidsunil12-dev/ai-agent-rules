@@ -28,6 +28,7 @@ The skill must execute the task, not merely explain how the user could do it.
 - **Never claim a raster file is vector.** PNG is raster; SVG is vector. Do not convert or rename PNG files to `.svg`. Only deliver SVGs if genuine vector tracing or vector generation has been performed and visually checked.
 - **Transparent background means real transparency.** A checkerboard pattern baked into an image is not transparency. Inspect the image alpha channel and verify output PNGs contain transparent pixels.
 - **Preserve the artwork.** Keep the icon's silhouette, colors, lighting, perspective, details, and proportions. Do not redesign, recolor, distort, or apply a different style during extraction.
+- **Universal Icon Rule — Single Primary Subject / Metaphor, Zero Cluttered AI-Slop (HARD, universal):** AI image models cram 5-6 random objects into one icon (coins + shield + chart + arrow + star + dial + ribbon). This is unacceptable AI-slop. Every icon MUST feature EXACTLY ONE primary focal subject / metaphor with a clean, uncluttered silhouette (e.g. clean folded invoice with single rupee mark, sleek bank vault, minimalist wallet). Maximum 1 subtle accent only if strictly necessary. In EVERY icon prompt to ChatGPT: explicitly mandate `Minimalist, single primary subject per icon, clean simple silhouette, uncluttered geometry. NO cluttered multiple objects, NO floating particles or extra confetti, NO complex mini-scenes. Clean, focused, consistent visual weight across the set.` In avoid list: `["cluttered icons", "too many elements in single icon", "complex scenes in icon", "floating confetti/particles", "over-detailed 3D clutter", "AI-slop overloaded icons"]`.
 - **Do not use arbitrary grid crops as the final extraction method** if they include pieces of neighboring icons, backgrounds, or other objects. Grid cells may be used as initial regions, but each crop must be segmented and inspected.
 - **No invented additions.** Do not add a logo, brand name, captions, labels, or decorative elements unless the user explicitly requests them.
 - **Logo gate:** If logo inclusion is not already answered for this task, ask once: “Should I add your company logo? Upload the exact logo, or reply No.” If the user says No, do not add one. If the user requests a logo, use the supplied logo exactly as provided; never redesign or modify it.
@@ -113,7 +114,7 @@ Check:
 
 Choose the extraction method based on the source:
 
-### A. Source already has real transparency
+### A. Source has real transparency (Direct generation)
 1. Use the alpha channel and connected-component analysis to identify icon regions.
 2. Group related components belonging to the same icon (for example, a small coin or sparkle attached to a main object).
 3. Keep detached details that visually belong to the icon.
@@ -121,21 +122,12 @@ Choose the extraction method based on the source:
 5. Remove stray components that belong to adjacent icons or background artifacts.
 6. Preserve the original RGB values and alpha edges.
 
-### B. Source has a flat or nearly flat background
-1. Estimate the background color from the outer canvas and empty gaps.
-2. Build a foreground mask using color distance and spatial context, not color alone.
-3. Preserve similarly colored foreground details that could otherwise be removed.
-4. Refine edges and remove background-color fringes without damaging the icon.
-5. Keep natural object shadows only if they are part of the intended artwork; remove broad sheet-level glow/background effects.
+### B. Solid or Opaque Background: ZERO BACKGROUND-REMOVAL RULE (HARD)
+- **NEVER attempt post-hoc background removal.** Do not run color distance, masking, thresholding, or rembg scripts.
+- **NEVER use ChatGPT's "Remove background" button/action or code execution (`Run code`).** ChatGPT background removal uses destructive Python thresholding that strips light/white pixels, burns holes into glass/metal/white bodies, and leaves charred, jagged halos. Always ignore and forbid ChatGPT's background removal feature.
+- **Immediate Regeneration:** If the model returns a solid or opaque background, DO NOT remove the background. REGENERATE immediately with an explicit direct-transparency prompt (`isolated on pure transparent background, PNG alpha channel, no solid backdrop, no ground plane`). Post-hoc removal is strictly prohibited.
 
-### C. Source has a complex gradient or multicolored background
-1. Use a suitable foreground-segmentation/background-removal model or a careful mask workflow if available.
-2. Use each icon's region as a guide, then segment its silhouette.
-3. Refine the alpha matte around antialiased edges.
-4. Remove color spill from the old background when needed.
-5. If accurate separation is not possible with available tools, do not pretend it is clean. Try a better segmentation method or regenerate the source with more separable spacing and a simpler/transparent background.
-
-### D. Grid-based extraction
+### C. Grid-based extraction (on verified transparent source)
 A grid can define initial regions, but it is only a starting point. For every region:
 1. Detect the actual icon silhouette.
 2. Remove adjacent-icon fragments and unrelated artwork.
