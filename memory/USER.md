@@ -4,6 +4,7 @@
 
 ## Who
 - **Non-developer.** Do not ask technical questions unless critical. After finishing work, hand a plain-language "what is my next move" guide (exact clicks/URLs/buttons), not code-level instructions.
+- **Universal HTML/CSS/JS Surge Live Link Rule (durable, user-enforced, HARD):** For ANY project built with or containing HTML, CSS, JS, when a task is completed, always deploy the project to Surge and provide the clickable live Surge URL (e.g. `https://<domain>.surge.sh`) in the response so user can immediately inspect and test the task live. Never hand over local `file://` or `localhost` paths, and never report done without live Surge link.
 - Expects skills to auto-route without being asked: UI/design/build → `master-ui-ux-design`; icons/logos → `master-icon-logo-generation`; app clone → `app-reconstruction`; coding/build/refactor/debug/review → `ecc-workflow`; client WhatsApp tasks → `client-task-runner`.
 - **Research before setup (durable, 2026-11-17, strong language):** do proper research (docs, known-good recipes, prior art) BEFORE multi-hour setup work. If a task drags or is still not working, stop and re-plan or hand over — do NOT keep trial-and-error-ing.
 - **Keep it simple:** for small edit tasks, use the lightest tool that works; no custom multi-step pipelines. For logo "edit, don't redraw" tasks, tight image prompt ("edit only this, don't alter existing look").
@@ -26,6 +27,7 @@
   - UI task handoff: user says "I'm testing in the other chat" → that's the signal to stop UI work here.
 - Narangpur Agro & Dairy: static client site (surge.sh, dual-domain: `narangpur-agro-and-dairy.surge.sh` + `narangpuragro.surge.sh`)
 - CredWise: static client site (two-tree sync rule: `Credwise-publish/` mirror; user hosts on own infra, not Netlify/Surge — deliverable = host-ready ZIP on Desktop)
+- **Desktop backups:** Aside config backup at `C:\Users\Admin\Desktop\Aside-Backup-2026-11-16\`; Universal AI backup at `C:\Users\Admin\Desktop\AI-Agent-Skills-Memory-Backup` (`SYSTEM-PROMPT-FOR-ANY-AI.md`, playbooks, skills, memory for Claude/Cursor/Windsurf/ChatGPT). Keep synchronized on agent/skill updates.
 - **Client-work repo:** `tfcsunil53-cloud/client-work` (private GitHub) — single repo holding all 14 client projects (13 Websites + 3 Mobile Apps); managed over GitHub, not local folders; deploy via Surge + WhatsApp to user's two numbers
 - Native Download Manager / IDM RE: Rust + Chrome MV3 extension (`C:\Users\Doraemon\Desktop\IDM`)
 - Free GitHub RDP Cloud PC: `rdp-cloud-pc` repo (workflow 410204781), pinned Tailscale `rdpcloudpc.tail996b15.ts.net`; phone via MS RDP + Tailscale; TeraBox `T:\` = 1 TB cold vault on laptop
@@ -43,6 +45,4 @@
 - **Surge CLI** v0.56.0 (deploy static sites; account `tfcsunil53@gmail.com` Free; `.cmd` shim broken — use `node "C:\Users\Admin\AppData\Roaming\npm\node_modules\surge\bin\surge"`)
 - **Google Sheets Apps Script** (form endpoints for Narangpur + CredWise; container-bound Web Apps, OAuth authorized)
 
-
-- **AI Agent Rules & Skills Repository:** https://github.com/droidsunil12-dev/ai-agent-rules (all operational standards, skills, memories, installer scripts; must sync whenever rules modified)
-
+- **AI Agent Rules & Skills Repository:** `https://github.com/droidsunil12-dev/ai-agent-rules` (all operational standards, skills, memories, and installer scripts; must be synced whenever rules are modified)
