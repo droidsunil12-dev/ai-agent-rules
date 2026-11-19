@@ -42,3 +42,7 @@
 - Windows Sandbox (for isolated AI agent execution; user prefers WSL2 + WSLg over full nested desktop)
 - **Surge CLI** v0.56.0 (deploy static sites; account `tfcsunil53@gmail.com` Free; `.cmd` shim broken — use `node "C:\Users\Admin\AppData\Roaming\npm\node_modules\surge\bin\surge"`)
 - **Google Sheets Apps Script** (form endpoints for Narangpur + CredWise; container-bound Web Apps, OAuth authorized)
+
+
+- **AI Agent Rules & Skills Repository:** https://github.com/droidsunil12-dev/ai-agent-rules (all operational standards, skills, memories, installer scripts; must sync whenever rules modified)
+
