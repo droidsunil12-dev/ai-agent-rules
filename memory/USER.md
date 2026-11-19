@@ -1,0 +1,44 @@
+# User Briefing
+
+<!-- L1 user briefing: refreshed by dreaming. -->
+
+## Who
+- **Non-developer.** Do not ask technical questions unless critical. After finishing work, hand a plain-language "what is my next move" guide (exact clicks/URLs/buttons), not code-level instructions.
+- Expects skills to auto-route without being asked: UI/design/build → `master-ui-ux-design`; icons/logos → `master-icon-logo-generation`; app clone → `app-reconstruction`; coding/build/refactor/debug/review → `ecc-workflow`; client WhatsApp tasks → `client-task-runner`.
+- **Research before setup (durable, 2026-11-17, strong language):** do proper research (docs, known-good recipes, prior art) BEFORE multi-hour setup work. If a task drags or is still not working, stop and re-plan or hand over — do NOT keep trial-and-error-ing.
+- **Keep it simple:** for small edit tasks, use the lightest tool that works; no custom multi-step pipelines. For logo "edit, don't redraw" tasks, tight image prompt ("edit only this, don't alter existing look").
+- **Edit vs create (hard):** edit task = smallest diff to existing asset. Never regenerate approved artwork. Inspect alpha channel before any logo edit. Horizontal logos trimmed never square-wrapped.
+- **No extra steps / no self-created jobs (durable, 2026-11-17, strong language):** Do exactly what was asked — stop after the requested action. No unrequested edits, no new folders, no extra sync/backup copies, no "while I'm here" cleanup. Plan-first: restate + write a tight plan BEFORE starting; run a verification checklist after; report back and WAIT for the user's review/feedback; NEVER assume or create its own work outside what was told.
+- **No WhatsApp replies without explicit consent (durable, 2026-11-17, HARD):** Agent must NEVER send a reply/message to any WhatsApp contact without the user's explicit consent in the current conversation. Reading WhatsApp as a task queue is fine; replying to a human is not. Default end state after deploy = report the link back to the user and stop.
+- **Complete free method preference (durable, 2026-11-17):** No paid services, no credit card. Ruled out: Oracle Cloud (needs card verification), Google Cloud Run (needs billing account), Cloud VMs (trial credit 90 days then free tier). GitHub Actions + routine is the chosen free stack for Supabase keep-alive.
+- **Kaggle ComfyUI verdict (durable, 2026-11-17):** ComfyUI on free Kaggle GPU is NOT practical for on-demand single-image asset generation (SDXL takes >1h21m for a single image). Fallback: use `imagegen` skill / ChatGPT browser for image generation; reserve Kaggle GPU for batch/multi-hour jobs only. Do not recommend ComfyUI-on-Kaggle as a quick asset tool.
+- **Final client-site handoff = host-ready ZIP on Desktop, not third-party deploy (durable, 2026-11-17, strong language):** For final client-site deliverables the user wants ONE clean host-ready ZIP on the Desktop and resents the agent offering to deploy to a third-party host (Netlify/Surge) when the user intends to host it themselves. Default to "build the ZIP" and stop, not "let me deploy it to X." Also reacts sharply to "demo" placeholder wording — final files must carry only real wiring, never demo language.
+- **New multi-screen app/dashboard:** use AGENTS.md §0.0. Show one labeled shortlist of original web design examples (favor relevant posts with visible engagement) and 3–4 vibrant palettes generated in Coolors. Palettes MUST be vibrant with rich multi-color variation across hues, never monotonous/dull. Mandatory: click "Visualize colors" (`△ ○ □` geometric icon in toolbar) to verify live on UI mockups before proposing; download the selected palette visual guide to `research/coolors-palette-guide.png` for downstream AI adoption. After both letter picks, ask for another reference or comment with a No option. Only then make the kit; keep layout, typography and style close to the design pick, and use color only from Coolors. Make chat feel like a live design review: visuals beside choices, one short question at a time, and research in project notes. No generic intake. **Runs must be autonomous through to a finished result (2026-11-18):** when I'm away, return to a *completed* task, not a paused one. No "continue?"/"shall I proceed?" stops between steps; 90s silence auto-continues at decision gates; handover = hold-and-monitor, not stop. Keep the task active for 90 seconds per design review, then choose suitable defaults and continue the local build if the user is away; no timeout for external or irreversible actions.
+- **Plan-first + never-self-draw-icons (durable, 2026-11-18, user-enforced strong language):** User demanded I stop "jumping in" to work without a plan, and stop force-generating ugly icons/images in SVG myself. **The main planning now lives in `AGENTS.md` §0.0 TASK ROUTER (the read-first layer):** for EVERY task I first classify it into one of 9 task types (A new multi-screen / B single-page / C edit-asset / D improve-UI / E deploy / F code / G clone / H research / I quick-fix), pull that type's start→finish playbook (steps + gate/rule per step + done-verification), write the plan FROM the type, then execute step-by-step and capture each verification. The agent is supposed to tell me how to do the task start→finish by task type instead of improvising. Codified in AGENTS.md §0.0 (playbooks) + §0.6 (index) + §0 (router entry). Plus the asset rule: NEVER hand-draw new icons/logos/screen mockups as SVG — always generate via ChatGPT image generation; the agent writes the prompt, attaches refs, downloads, trims/packages. Self-drawn SVG = flagged placeholder only. Codified in AGENTS.md §0.7 + `master-icon-logo-generation` rule 0 + `lessons-learned` + `MEMORY.md`. The KinePay B2B hand-drawn 19 feature + 4 txn icons were the rejected "ugly icons" mistake.
+- Handover = **hold and keep monitoring** the screen for that step's completion, then auto-resume — do NOT stop and wait to be pinged. Credential/secret steps: hand over immediately (threshold = one failed meaningful attempt, not the usual two) with a DevTools guide; do not attempt self-extraction.
+
+## Active Projects
+- KinePay: fintech marketing site (surge.sh) + local Kinepay app (multi-screen HTML/Tailwind banking UI at `C:\Users\Admin\Desktop\Kinepay app`) + Kinepay B2B prototype live at `https://kinepay-b2b.surge.sh` (`C:\Users\Admin\Desktop\Kinepay B2B\`)
+- **Chat discipline:**
+  - Chat A = agent/skill/memory improvement (planning, rules, gates, lessons-learned, AGENTS.md updates)
+  - Chat B = actual UI work (banner fixes, layout changes, deploys, screenshots)
+  - **Do NOT flood Chat A with UI execution.** Keep it focused on improving the agent itself.
+  - UI task handoff: user says "I'm testing in the other chat" → that's the signal to stop UI work here.
+- Narangpur Agro & Dairy: static client site (surge.sh, dual-domain: `narangpur-agro-and-dairy.surge.sh` + `narangpuragro.surge.sh`)
+- CredWise: static client site (two-tree sync rule: `Credwise-publish/` mirror; user hosts on own infra, not Netlify/Surge — deliverable = host-ready ZIP on Desktop)
+- **Client-work repo:** `tfcsunil53-cloud/client-work` (private GitHub) — single repo holding all 14 client projects (13 Websites + 3 Mobile Apps); managed over GitHub, not local folders; deploy via Surge + WhatsApp to user's two numbers
+- Native Download Manager / IDM RE: Rust + Chrome MV3 extension (`C:\Users\Doraemon\Desktop\IDM`)
+- Free GitHub RDP Cloud PC: `rdp-cloud-pc` repo (workflow 410204781), pinned Tailscale `rdpcloudpc.tail996b15.ts.net`; phone via MS RDP + Tailscale; TeraBox `T:\` = 1 TB cold vault on laptop
+- Jarvis/Dograh: Node bridge + pluggable LLM brain at `C:\Users\Doraemon\Desktop\Jarvis\repo`
+- Mark-LVI JARVIS: FatihMakes Python desktop assistant at `C:\Users\Doraemon\Downloads\Compressed\Mark-LVI-main` (voice-in disabled: WDM-KS audio driver -9999)
+- GreasePanda: Firefox/Chrome userscript-manager extension at `D:\My Projects\GreasePanda`
+- **Kaggle GPU notebook:** ComfyUI + Flux.1-dev on T4 x2 (32 GB VRAM) for UI/UX design asset automation (`tfcsunil53` account; notebook `notebook54290d7aea`)
+
+## Tooling
+- OmniRush (`glitchpopper`) + Craft Anything for agent-driven dev sessions
+- Granola (Business trial, `tfcsunil53@gmail.com`) for meeting notes + voice dictation; OpenWhispr for speech-to-text
+- Tailscale (laptop; reinstalled via `Open-CloudPC.ps1` launcher after 2026-11-07 uninstall)
+- TeraBox Drive v0.3.0 (`T:\` = 1 TB mounted, closed-source WinFSP/rclone; cold storage only, no compute)
+- Windows Sandbox (for isolated AI agent execution; user prefers WSL2 + WSLg over full nested desktop)
+- **Surge CLI** v0.56.0 (deploy static sites; account `tfcsunil53@gmail.com` Free; `.cmd` shim broken — use `node "C:\Users\Admin\AppData\Roaming\npm\node_modules\surge\bin\surge"`)
+- **Google Sheets Apps Script** (form endpoints for Narangpur + CredWise; container-bound Web Apps, OAuth authorized)
