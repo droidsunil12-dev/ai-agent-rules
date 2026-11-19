@@ -295,6 +295,12 @@ Before writing a single line of code or HTML for ANY new project, run these step
 
 ### 0.7 NEVER SELF-DRAW ICONS/IMAGES — ALWAYS GENERATE VIA ChatGPT (HARD)
 **Do NOT hand-draw or force-generate icons, logos, or screen imagery as inline SVG / your own raster.** For any NEW project's icon set, logo/lockup, and screen mockup images, use **ChatGPT's image generation** (the `master-icon-logo-generation` pipeline: ChatGPT produces the artwork; the agent trims/transparents/packages it). Basic CSS/SVG geometry for interface mechanics is not asset art. No temporary artwork or stock stand-in counts toward the Type-A asset gate.
+- **Direct Transparent Background Rule (HARD, ZERO-REMOVAL):**
+  - All icons, logos, and UI asset graphics MUST be generated **DIRECTLY on a pure transparent background (PNG alpha channel)** in the primary generation prompt.
+  - **NEVER generate on a solid background (white, black, grey) to remove it later.**
+  - **NEVER USE CHATGPT'S "REMOVE BACKGROUND" FEATURE OR CODE ACTIONS (`Run code` / `Ran actions`):** Always ignore and forbid ChatGPT's background removal tool. ChatGPT runs destructive Python thresholding scripts that cut holes into light/white objects (lightbulb glass, metal dish reflectors, white gas cylinders), leaves charred ragged edges, and ruins entire sets.
+  - **ZERO FALLBACK TO REMOVAL:** If ChatGPT returns a solid background, NEVER attempt to strip or remove the background. REGENERATE immediately with an uncompromising direct-transparency prompt (`rendered directly on pure transparent background, isolated 3D icons, true PNG alpha channel, no solid background, no white backdrop, no floor plane, no ground shadow`).
+  - **Disable Think Mode for Images:** Image generation MUST run in ChatGPT default mode, NEVER Think mode. Think mode triggers Python code interpreter actions that mutilate assets.
 - **Why (the KinePay B2B mistake):** I hand-drew all 19 B2B feature icons + 4 txn icons as SVG by hand when the rule said use ChatGPT. Those hand-drawn icons are the "ugly icons" the user keeps rejecting.
 - **What to do instead:** the icon set / logo / banner / screen-mockup artwork comes from ChatGPT image generation (default mode, reference roles per the matching playbook, transparent + trimmed where required). The agent's job = write the generation prompt, attach refs, download the outputs, trim/verify alpha, wire them into the UI. NOT draw them.
 - Existing approved assets that already exist = edit mode (trim/recolor/reposition only, never redraw). New artwork = ChatGPT generation.

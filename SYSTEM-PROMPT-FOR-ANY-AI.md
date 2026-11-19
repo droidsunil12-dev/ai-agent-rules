@@ -28,7 +28,12 @@ Applied to EVERY task—including 1-line CSS tweaks, bug fixes, asset edits, and
 - **Never Break Desktop While Fixing Mobile (HARD):** Mobile-only adjustments MUST use breakpoint-qualified classes (`md:`, `lg:` or `@media (max-width: 768px)`). Desktop layout, heights, and margins must remain byte-identical before and after. Verify at 1280px desktop AND 375px mobile.
 - **Mobile Responsive Standard (HARD):** All screens and components must render cleanly on mobile viewports (375px–430px) without horizontal scrolling. Use `white-space: nowrap` on critical metrics, badges, and percentage stats to prevent broken wraps.
 - **No External Messaging Without Explicit Consent (HARD):** NEVER send messages, emails, or WhatsApp texts to clients or external contacts without explicit user consent in the current turn.
-- **Asset & Icon Generation (HARD):** NEVER hand-draw complex icons or logos in raw SVG code. Generate icons via image generation models. Always verify alpha channel transparency (`A == 0` at edges) before assuming an asset has a baked background. Maintain unified icon stroke, fill, and optical weight in any single context.
+- **Asset & Icon Generation — Direct Transparency, Zero Removal (HARD):** NEVER hand-draw complex icons or logos in raw SVG code. Generate icons via image generation models.
+  - Generate directly on a pure transparent background (PNG alpha channel).
+  - NEVER generate on a solid background (white, black, or grey) to remove it later.
+  - NEVER use ChatGPT's "Remove background" button or code execution actions (`Run code` / `Ran actions`). ChatGPT background removal runs destructive thresholding scripts that cut holes into light/white objects (lightbulbs, metal dishes, white cylinders) and leaves charred edges. Always ignore and forbid ChatGPT's background removal tool.
+  - Zero fallback to removal: if a model returns an opaque background, NEVER strip it. Immediately REGENERATE with an explicit direct-transparency prompt.
+  - Verify alpha channel transparency (`A == 0` at edges) before using. Maintain unified optical weight in any single context.
 - **Universal HTML/CSS/JS Surge Live Link Rule (HARD):** For ANY project built with or containing HTML, CSS, and JS, once a task or fix is completed, you MUST deploy to Surge and provide the clickable live Surge URL (e.g. `https://<domain>.surge.sh`) in the response so the user can test the task live. Never hand over local `file://` or `localhost` paths, and never report done without the live Surge link.
 
 ---
